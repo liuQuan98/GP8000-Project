@@ -8,26 +8,33 @@ from chatbot.tesseract_integration import convert_pdf_and_img_to_text
 
 def get_response(message, history):
     print("printing history", flush=True)
-    for item in history:
-        if type(item) == dict:
-            print(item, flush=True)
-            user_prompt = message.get("text")
-            files = message.get("files")
+    # for item in history:
+    #     if type(item) == dict:
+    #         print(item, flush=True)
+    #         user_prompt = message.get("text")
+    #         files = message.get("files")
 
 
     if type(message) == dict:
         user_prompt = message.get("text")
         files = message.get("files")
 
+        print(user_prompt, files, flush=True)
+
         pdf_file_path=None
         images = []
+        image_paths = []
         for item in files:
-            path = item.get("path")
+            if type(item) == dict:
+                path = item.get("path")
+            else:
+                path = item
             if path.endswith(".pdf"):
                 pdf_file_path = path
             elif path.endswith(".png") or path.endswith(".jpg"):
                 try:
                     images.append(np.array(Image.open(path)))
+                    image_paths.append(path)
                 except FileNotFoundError as e:
                     print(f"File {path} not found.", flush=True)
                     user_prompt += f"Notice: File {path} not found."
@@ -51,7 +58,7 @@ def get_response(message, history):
         {user_prompt}
     '''
     
-    return handle_chat(system_prompt, images=images)
+    return handle_chat(system_prompt, images=image_paths)
 
 
 demo = gr.ChatInterface(get_response, type="messages", autofocus=False, multimodal=True)
