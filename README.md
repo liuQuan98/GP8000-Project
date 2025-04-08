@@ -33,8 +33,8 @@ gradio-chatbot-project
    ```bash
    conda env create -f reqrirements.yaml
    conda activate gp8000
-   pip install git+https://github.com/huggingface/transformers accelerate
-   pip install gradio==5.23.3 pytesseract pdf2image Pillow
+   pip install modelscope[multi-modal] transformers_stream_generator
+   pip install gradio==5.23.3 pytesseract pdf2image Pillow 
    ```
 
 4. **Run the application**:
