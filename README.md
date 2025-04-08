@@ -34,6 +34,7 @@ gradio-chatbot-project
    conda env create -f reqrirements.yaml
    conda activate gp8000
    pip install git+https://github.com/huggingface/transformers accelerate
+   pip install gradio==3.16.2 pytesseract pdf2image Pillow
    ```
 
 4. **Run the application**:

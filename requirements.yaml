@@ -11,9 +11,3 @@ dependencies:
   - pytorch
   - torchvision
   - numpy
-  - pip:
-      - gradio==3.16.2
-      - transformers==4.34.0
-      - pytesseract
-      - pdf2image
-      - Pillow
