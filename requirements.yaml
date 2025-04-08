@@ -8,7 +8,7 @@ dependencies:
   - python=3.12.0
   - pip
   - cuda-toolkit=12.1
-  - pytorch=2.1.0
+  - pytorch
   - torchvision
   - numpy
   - pip:
